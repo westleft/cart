@@ -3,6 +3,9 @@ $connection = require_once './connection.php';
 
 $products = $connection->getProducts();
 // echo '<pre>',print_r($products),'</pre>';
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -50,17 +53,17 @@ $products = $connection->getProducts();
                             </p>
                         </div>
                         <p class="price">
-                            <?php echo $product['price']; ?>
+                            $<?php echo $product['price']; ?>
                         </p>
                         <div class="quantity">
                             <div class="quantity_inner">
-                                <button> - </button>
+                                <button> − </button>
                                 <p>2</p>
-                                <button> + </button>
+                                <button> ＋ </button>
                             </div>
                         </div>
                         <p class="total">$240</p>
-                        <a href="" class="remove">X</a>
+                        <a href="" class="remove">×</a>
                     </li>
                 <?php endforeach; ?>
             </ul>
