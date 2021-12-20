@@ -1,0 +1,142 @@
+.header {
+    width: 100%;
+    background-color: #111111;
+    color: #FFF;
+    display: flex;
+    padding: 32px 4%;
+    ul {
+        display: flex;
+        li {
+            font-size: 1vw;
+            padding: 0 12px;
+            a {
+                color: #FFF;
+                text-decoration: none;
+                font-size: 1.5vw;
+            }
+        }
+    }
+}
+
+.cart {
+    @include flexCenter(center, center);
+    flex-direction: column;
+    font-family: 'Noto Sans JP', sans-serif;
+    width: 100%;
+    h2 {
+        font-size: 4vw;
+        padding: 4% 0;
+    }
+    .container {
+        display: flex;
+        width: 100%;
+        padding: 4% 8%;
+        ul {
+            display: flex;
+            flex-direction: column;
+            flex: 7.5;
+            margin-right: 4%;
+            li {
+                @include flexCenter(center, center);
+                width: 100%;
+                padding: 20px 0;
+                border-bottom: 2px solid #efefef;
+                position: relative;
+                .product {
+                    @include flexCenter(center, flex-start);
+                    flex: 3;
+                    
+                    img {
+                        height: 80px;
+                        width: 60px;
+                        object-fit: cover;
+                        object-position: center;
+                        margin-right: 20px;
+                    }
+                }
+                .price {
+                    @include flexCenter(center, center);
+                    flex: 2;
+                }
+                .quantity {
+                    @include flexCenter(center, center);
+                    flex: 1;
+                    .quantity_inner {
+                        @include flexCenter(flex-start, space-around);
+                        background-color: #efefef;
+                        border-radius: 80px;
+                        width: 80px;
+                        padding: 8px;
+                        button {
+                            @include flexCenter(center, center);
+                            border: none;
+                            background-color: rgba(255, 255, 255, 0);
+                            font-weight: 600;
+                            font-size: 16px;
+                            padding: 0 8px;
+                            cursor: pointer;
+                        }
+                        p {
+                            @include flexCenter(center, space-around);
+                        }
+                    }
+                }
+                .total {
+                    @include flexCenter(center, center);
+                    flex: 2;
+                }
+                .remove {
+                    @include flexCenter(center, center);
+                    @include size(30px ,30px);
+                    position: absolute;
+                    transform: translateY(-50%);
+                    top: 50%;
+                    right: 20px;
+                    background-color: #efefef;
+                    border-radius: 20px;
+                    text-decoration: none;
+                }
+            }
+        }
+        .summary {
+            flex: 2.5;
+            
+            .content {
+                background-color: #efefef;
+                padding: 0 16px;
+                h3 {
+                    font-size: 1vw;
+                    padding: 20px 0;
+                    border-bottom: 2px solid #c4c4c4a2;
+                }
+                p {
+                    @include flexCenter(center, space-between);
+                    padding: 20px 0;
+                    color: rgba(0, 0, 0, 0.541);
+                }
+                .shipping {
+                    padding-top: 0;
+                }
+                .total {
+                    border-top: 2px solid #c4c4c4a2;
+                    color: rgba(0, 0, 0, 0.897);
+                }
+                span {
+                    color: rgba(0, 0, 0, 0.9);
+                }
+            }
+
+            button {
+                width: 100%;
+                background-color: #509450;
+                color: #FFF;
+                padding: 20px 0;
+                font-size: 1vw;
+                border: none;
+                margin-top: 20px;
+                cursor: pointer;
+            }
+        }
+    }
+    
+}

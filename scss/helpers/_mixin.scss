@@ -1,0 +1,33 @@
+@mixin flexCenter ($a, $j){
+    display: flex;
+    align-items: $a;
+    justify-content: $j;
+}
+
+@mixin size ($h, $w) {
+    height: $h;
+    width: $w;
+}
+
+@mixin vertical-center {
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+ }
+// div {
+//    @include vertical-center();
+// }
+
+@mixin mobile{
+    @media(max-width:376px){
+      @content;
+    }
+}
+
+@mixin pad{
+    @media(max-width:768px){
+      @content;
+    }
+}
