@@ -59,17 +59,36 @@ table {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
 }
 
 .header ul li {
   font-size: 1vw;
   padding: 0 12px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 10%;
+          flex: 1 10%;
 }
 
 .header ul li a {
   color: #FFF;
   text-decoration: none;
   font-size: 1.5vw;
+}
+
+.header ul li:last-child {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 90%;
+          flex: 1 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .cart {
@@ -203,7 +222,7 @@ table {
   padding: 8px;
 }
 
-.cart .container ul li .quantity .quantity_inner button {
+.cart .container ul li .quantity .quantity_inner a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -219,6 +238,7 @@ table {
   font-size: 16px;
   padding: 0 8px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .cart .container ul li .quantity .quantity_inner p {

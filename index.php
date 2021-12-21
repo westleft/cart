@@ -1,10 +1,10 @@
 <?php
 $connection = require_once './connection.php';
+require_once './method/cart.php';
 
 $products = $connection->getProducts();
-// echo '<pre>',print_r($products),'</pre>';
-
-
+$shipping_data = $cart->shipping();
+// echo '<pre>', print_r($_SESSION['cartItems']), '</pre>';
 
 ?>
 
@@ -27,10 +27,13 @@ $products = $connection->getProducts();
     <div class="header">
         <ul>
             <li>
-                <a href="#">Shop</a>
+                <a href="./shop.php">Shop</a>
             </li>
             <li>
-                <a href="#">Cart</a>
+                <a href="./index.php">Cart</a>
+            </li>
+            <li>
+                <a href="#">LOGIN</a>
             </li>
         </ul>
     </div>
@@ -44,41 +47,53 @@ $products = $connection->getProducts();
                     <p class="quantity">QUANTITY</p>
                     <p class="total">TOTAL</p>
                 </li>
-                <?php foreach ($products as $product) : ?>
+                <?php foreach ($_SESSION['cartItems'] as $product) : ?>
                     <li>
                         <div class="product">
-                            <img src="<?php echo $product['image']; ?>" alt="">
+                            <img src="<?php echo $product['item']['image']; ?>" alt="">
                             <p>
-                                <?php echo $product['title']; ?>
+                                <?php echo $product['item']['title']; ?>
                             </p>
                         </div>
                         <p class="price">
-                            $<?php echo $product['price']; ?>
+                            $<?php echo $product['item']['price']; ?>
                         </p>
                         <div class="quantity">
                             <div class="quantity_inner">
-                                <button> − </button>
-                                <p>2</p>
-                                <button> ＋ </button>
+                                <a href="<?php echo './method/calc.php?id=' . $product['item']['id'] . '&operation=decrease'; ?>">−</a>
+                                <p><?php echo $product['qty']; ?></p>
+                                <a href="<?php echo './method/calc.php?id=' . $product['item']['id'] . '&operation=add'; ?>">＋</a>
                             </div>
                         </div>
-                        <p class="total">$240</p>
-                        <a href="" class="remove">×</a>
+                        <p class="total">
+                            $<?php echo $product['total']; ?>
+                        </p>
+                        <a href="./method/remove.php?id=<?php echo $product['item']['id']; ?>" class="remove">×</a>
                     </li>
                 <?php endforeach; ?>
             </ul>
             <div class="summary">
                 <div class="content">
                     <h3>Order Summary</h3>
-                    <p>Subtotal<span>$418</span></p>
-                    <p class="shipping">Shipping<span>Free</span></p>
-                    <p class="total">Total<span>$100<span></p>
+                    <p>Subtotal
+                        <span>
+                            <?php echo $shipping_data['total']; ?>
+                        </span>
+                    </p>
+                    <p class="shipping">Shipping
+                        <span>
+                            <?php echo $shipping_data['shipping']; ?>
+                        </span>
+                    </p>
+                    <p class="total">Total
+                        <span>
+                            <?php echo $shipping_data['total_price']; ?>
+                        <span>
+                    </p>
                 </div>
                 <button>CHECKOUT</button>
             </div>
-
         </div>
-
     </div>
 </body>
 

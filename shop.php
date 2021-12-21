@@ -1,12 +1,17 @@
 <?php
     $connection = require_once './connection.php';
+    require_once './method/cart.php';
 
     $products = $connection->getProducts();
     // echo '<pre>',print_r($products),'</pre>';
     if(isset($_GET['id'])){
-        echo '<pre>', print_r($products[$_GET['id']-1]), '</pre>';
+        // echo '<pre>', print_r($products[$_GET['id']-1]), '</pre>';
+        $product = $products[$_GET['id']-1];
+        $cart->addToCart($product);
+        // echo '<pre>', print_r($product), '</pre>';
     }
 
+    echo '<pre>', print_r($_SESSION), '</pre>';
     // echo '<pre>', print_r($products[$_GET['id']]), '</pre>';
 ?>
 
@@ -25,10 +30,10 @@
     <div class="header">
         <ul>
             <li>
-                <a href="#">Shop</a>
+                <a href="./shop.php">Shop</a>
             </li>
             <li>
-                <a href="#">Cart</a>
+                <a href="./index.php">Cart</a>
             </li>
         </ul>
     </div>
@@ -40,7 +45,7 @@
             </li>
         <?php endforeach; ?>
     </ul>
-
+    <a href="./method/clear.php">clearAll</a>
 </body>
 
 </html>
