@@ -8,9 +8,11 @@
         display: flex;
         width: 100%;
         li {
+            @include flexCenter(center, center);
+            position: relative;
             font-size: 1vw;
             padding: 0 12px;
-            flex: 1 10%;
+            flex: 1 2%;
             a {
                 color: #FFF;
                 text-decoration: none;
@@ -23,7 +25,21 @@
             @include flexCenter(center, flex-end);
         }
             
-        
+        .cartIcon {
+            @include size(100%, 100%);
+            filter: invert(100%);
+        }
+        .cartQty {
+            @include size(24px, 24px);
+            @include flexCenter(center, center);
+            position: absolute;
+            top: -12%;
+            right: 0;
+            background-color: rgb(206, 45, 45);
+            color: #FFF;
+            border-radius: 50%;
+            font-size: 8px;
+        }
     }
 }
 
@@ -149,4 +165,60 @@
         }
     }
     
+}
+
+.shop_content {
+    @include flexCenter(center, center);
+    flex-direction: column;
+    font-family: '微軟正黑體';
+    width: 100%;
+    background-color: rgb(34, 34, 34);
+    padding: 4% 20px;
+    position: relative;
+    ul {
+        @include flexCenter(center, center);
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 1600px;
+    }
+    .product {
+        @include flexCenter(center, space-between);
+        flex-direction: column;
+        width: 12%;
+        color: #FFF;
+        margin: 2%;
+        img {
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        h3 {
+            font-size: 1vw;
+            padding: 20px;
+        }
+        .price {
+            padding-bottom: 20px;
+        }
+        a {
+            @include flexCenter(center, center);
+            border: solid 2px #FFF;
+            width: 80%;
+            border-radius: 40px;
+            padding: 6px 0;
+            font-size: 1vw;
+            text-decoration: none;
+            color: #fff;
+            transition: 0.2s;
+            font-size: 0.8vw;
+            img {
+                filter: invert(100%);
+                width: 20px;
+                margin-right: 4px;
+            }
+        }
+        a:hover{
+            background-color: rgb(206, 45, 45);
+            border: solid 2px rgb(206, 45, 45);
+        }
+    }
 }

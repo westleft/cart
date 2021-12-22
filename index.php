@@ -5,6 +5,7 @@ require_once './method/cart.php';
 $products = $connection->getProducts();
 $shipping_data = $cart->shipping();
 // echo '<pre>', print_r($_SESSION['cartItems']), '</pre>';
+echo $shipping_data['qty'];
 
 ?>
 
@@ -24,19 +25,7 @@ $shipping_data = $cart->shipping();
 </head>
 
 <body>
-    <div class="header">
-        <ul>
-            <li>
-                <a href="./shop.php">Shop</a>
-            </li>
-            <li>
-                <a href="./index.php">Cart</a>
-            </li>
-            <li>
-                <a href="#">LOGIN</a>
-            </li>
-        </ul>
-    </div>
+<?php require_once './content/header.php' ?>
     <div class="cart">
         <h2>Your Cart</h2>
         <div class="container">
