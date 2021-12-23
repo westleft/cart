@@ -3,10 +3,8 @@ $connection = require_once './connection.php';
 require_once './method/cart.php';
 
 $products = $connection->getProducts();
-$shipping_data = $cart->shipping();
-// echo '<pre>', print_r($_SESSION['cartItems']), '</pre>';
-echo $shipping_data['qty'];
 
+// echo '<pre>', print_r($_SESSION['cartItems']), '</pre>';
 ?>
 
 <!DOCTYPE html>

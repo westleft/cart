@@ -3,15 +3,16 @@
     require_once './method/cart.php';
 
     $products = $connection->getProducts();
-    // echo '<pre>',print_r($products),'</pre>';
+
+    $new_products = array_column($products, 'id');
+    array_multisort($new_products, SORT_ASC, $products);
+
     if (isset($_GET['id'])) {
-        // echo '<pre>', print_r($products[$_GET['id']-1]), '</pre>';
         $product = $products[$_GET['id'] - 1];
         $cart->addToCart($product);
-        // echo '<pre>', print_r($product), '</pre>';
     }
-    echo $shipping_data['qty'];
-    echo '<pre>', print_r($_SESSION), '</pre>';
+    // echo $shipping_data['qty'];
+    // echo '<pre>', print_r($products), '</pre>';
     // echo '<pre>', print_r($products[$_GET['id']]), '</pre>';
 ?>
 
@@ -31,62 +32,22 @@
 
     <div class="shop_content">
         <ul>
-            <li class="product">
-                <img src="https://movies.yahoo.com.tw/i/o/production/movies/January2021/TFaMaFvMK3nwkWhpxFvy-757x1080.jpg" alt="">
-                <h3>魔鬼剋星</h3>
-                <p class="price">$299</p>
-                <a href="./shop.php" class="buy">
-                    <img src="./images/shopping-cart.png" alt="">
-                    Buy Now
-                </a>
-            </li>
-            <li class="product">
-                <img src="https://movies.yahoo.com.tw/i/o/production/movies/January2021/TFaMaFvMK3nwkWhpxFvy-757x1080.jpg" alt="">
-                <h3>魔鬼剋星</h3>
-                <p class="price">$299</p>
-                <a href="#" class="buy">
-                    <img src="./images/shopping-cart.png" alt="">
-                    Buy Now
-                </a>
-            </li><li class="product">
-                <img src="https://movies.yahoo.com.tw/i/o/production/movies/January2021/TFaMaFvMK3nwkWhpxFvy-757x1080.jpg" alt="">
-                <h3>魔鬼剋星</h3>
-                <p class="price">$299</p>
-                <a href="#" class="buy">
-                    <img src="./images/shopping-cart.png" alt="">
-                    Buy Now
-                </a>
-            </li><li class="product">
-                <img src="https://movies.yahoo.com.tw/i/o/production/movies/January2021/TFaMaFvMK3nwkWhpxFvy-757x1080.jpg" alt="">
-                <h3>魔鬼剋星</h3>
-                <p class="price">$299</p>
-                <a href="#" class="buy">
-                    <img src="./images/shopping-cart.png" alt="">
-                    Buy Now
-                </a>
-            </li><li class="product">
-                <img src="https://movies.yahoo.com.tw/i/o/production/movies/January2021/TFaMaFvMK3nwkWhpxFvy-757x1080.jpg" alt="">
-                <h3>魔鬼剋星</h3>
-                <p class="price">$299</p>
-                <a href="#" class="buy">
-                    <img src="./images/shopping-cart.png" alt="">
-                    Buy Now
-                </a>
-            </li><li class="product">
-                <img src="https://movies.yahoo.com.tw/i/o/production/movies/January2021/TFaMaFvMK3nwkWhpxFvy-757x1080.jpg" alt="">
-                <h3>魔鬼剋星</h3>
-                <p class="price">$299</p>
-                <a href="#" class="buy">
-                    <img src="./images/shopping-cart.png" alt="">
-                    Buy Now
-                </a>
-            </li>
-
             <?php foreach ($products as $product) : ?>
+                
+                <?php echo $product['img']; ?>
                 <li class="product">
-                    <img src="https://movies.yahoo.com.tw/i/o/production/movies/January2021/TFaMaFvMK3nwkWhpxFvy-757x1080.jpg" alt="">
-                    <?php echo $product['title']; ?>
-                    <a href="?id=<?php echo $product['id'] ?>">Buy Now</a>
+                    <img src="<?php echo $product['image']; ?>" alt="">
+                    <h3>
+                        <?php echo $product['title']; ?>
+                    </h3>
+                    <p class="price">
+                        $<?php echo $product['price']; ?>
+                    </p>
+                    <a href="shop.php?id=<?php echo $product['id'] ?>" class="buy">
+                        <img src="./images/shopping-cart.png" alt="">
+                        Buy Now
+                    </a>
+                    <?php echo $product['id'] ?>
                 </li>
             <?php endforeach; ?>
         </ul>

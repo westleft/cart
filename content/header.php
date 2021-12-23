@@ -1,6 +1,8 @@
 <?php
     $connection = require_once './connection.php';
     require_once './method/cart.php';
+
+    $shipping_data = $cart->shipping();
 ?>
 
 <div class="header">
