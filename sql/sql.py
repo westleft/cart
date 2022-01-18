@@ -4,7 +4,14 @@ from crawler import crawler
 data = crawler.getDetail()
 
 #資料庫連線設定
-db = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='root', db='cart', charset='utf8')
+db = pymysql.connect(
+    host='127.0.0.1', 
+    port=3306, 
+    user='root', 
+    passwd='root', 
+    db='cart', 
+    charset='utf8'
+)
 #建立操作游標
 cursor = db.cursor()
 #執行語法

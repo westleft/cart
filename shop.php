@@ -11,6 +11,7 @@
         $product = $products[$_GET['id'] - 1];
         $cart->addToCart($product);
     }
+
     // echo $shipping_data['qty'];
     // echo '<pre>', print_r($products), '</pre>';
     // echo '<pre>', print_r($products[$_GET['id']]), '</pre>';
@@ -28,7 +29,7 @@
 </head>
 
 <body>
-    <?php require_once './content/header.php'; ?>
+    <?php require_once './layouts/header.php'; ?>
 
     <div class="shop_content">
         <ul>

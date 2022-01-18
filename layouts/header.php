@@ -19,7 +19,11 @@
             </a>
         </li>
         <li>
-            <a href="#">LOGIN</a>
+            <?php if($_SESSION['user']):  ?>
+                <a href="../login.php?type=logged">LOGOUT</a>
+            <?php else: ?>
+                <a href="../login.php">LOGIN</a>
+            <?php endif; ?>
         </li>
     </ul>
 </div>

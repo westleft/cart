@@ -29,6 +29,36 @@ class Connection
 
     return $statement->fetchAll(PDO::FETCH_ASSOC);
   }
+
+  public function register($account, $password){
+    $hash_password = password_hash($password, PASSWORD_DEFAULT);
+
+    $mysqlRequest = "INSERT INTO users(account, password) VALUES(:account, :password);";
+
+    $statement = $this->pdo->prepare($mysqlRequest);
+    $statement->execute(array(
+      'account' => $account,
+      'password' => $hash_password,
+    ));
+  }
+
+  public function logIn($account, $password){
+    $mysqlRequest = "SELECT account,`password` FROM users WHERE account = :account ";
+
+    $statement = $this->pdo->prepare($mysqlRequest);
+    $statement->execute(array(
+      'account' => $account,
+    ));
+    $hash = $statement->fetch(PDO::FETCH_ASSOC)["password"];
+
+    if(password_verify($password, $hash)){
+      $_SESSION['user'] = 'logined';
+    }else{
+      $error_message = '登入失敗';
+      return $error_message;
+    }
+  }
+
 }
 
 return new Connection();

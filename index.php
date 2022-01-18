@@ -4,7 +4,7 @@ require_once './method/cart.php';
 
 $products = $connection->getProducts();
 
-// echo '<pre>', print_r($_SESSION['cartItems']), '</pre>';
+echo '<pre>', print_r($_SESSION), '</pre>';
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ $products = $connection->getProducts();
 </head>
 
 <body>
-<?php require_once './content/header.php' ?>
+<?php require_once './layouts/header.php' ?>
     <div class="cart">
         <h2>Your Cart</h2>
         <div class="container">
