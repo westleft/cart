@@ -1,9 +1,9 @@
 <?php
+require_once __DIR__."../../vendor/autoload.php";
 
-require_once './cart.php';
+use app\method\Cart;
+
+$cart = new Cart();
 $cart->remove($_GET['id']);
-
-// echo $_SESSION['cartItems'];
-// echo '<pre>', print_r($_SESSION['cartItems'][$_GET['id']]), '</pre>';
 
 header('Location: ../index.php');

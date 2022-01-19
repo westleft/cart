@@ -1,0 +1,15 @@
+{
+    "name": "use/use",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "westleft",
+            "email": "westleft@gmail.com"
+        }
+    ],
+    "require": {}
+}

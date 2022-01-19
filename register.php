@@ -1,6 +1,11 @@
 <?php
-    $connection = require_once './connection.php';
-
+    require_once __DIR__."/vendor/autoload.php";
+    
+    use app\Connection;
+    use app\method\Cart;
+    $connection = new Connection();
+    $cart = new Cart();
+    
     if($_POST){
         $connection->register($_POST['account'], $_POST['password']);
     }

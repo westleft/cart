@@ -1,6 +1,12 @@
 <?php
-    require_once './method/cart.php';
-    $connection = require_once './connection.php';
+    require_once __DIR__."/vendor/autoload.php";
+    
+    use app\Connection;
+    use app\method\Cart;
+    
+    $connection = new Connection();   
+    $cart = new Cart();
+
 
     if($_SESSION['user']){
         header('Location: ./shop.php'); // 已經登入滾回首頁
@@ -13,7 +19,6 @@
         header('Location: ./shop.php'); // 登出完滾回首頁
     }
 
-    
 ?>
 
 <!DOCTYPE html>

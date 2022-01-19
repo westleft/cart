@@ -1,8 +1,9 @@
 <?php
 
+namespace app\method;
+
 class Cart {
-    function __construct()
-    {
+    function __construct(){
         if(!isset($_SESSION)){
             session_start();
         }
@@ -28,6 +29,7 @@ class Cart {
         
         echo '<pre>', print_r($_SESSION['cartItems'][$id]), '</pre>';
     }
+    
     public function clearAll(){
         unset($_SESSION['cartItems']);
     }
@@ -55,7 +57,8 @@ class Cart {
         }
         return $shipping_data;
     }
-}
 
-$cart = new Cart();
-return $cart;
+    public function say(){
+        echo "hi";
+    }
+}

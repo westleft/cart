@@ -1,7 +1,4 @@
 <?php
-    $connection = require_once './connection.php';
-    require_once './method/cart.php';
-
     $shipping_data = $cart->shipping();
 ?>
 
@@ -23,6 +20,7 @@
                 <a href="../login.php?type=logged">LOGOUT</a>
             <?php else: ?>
                 <a href="../login.php">LOGIN</a>
+                <a href="../register.php">Register</a>
             <?php endif; ?>
         </li>
     </ul>

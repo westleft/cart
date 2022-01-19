@@ -1,10 +1,15 @@
 <?php
-$connection = require_once './connection.php';
-require_once './method/cart.php';
+    require_once __DIR__."/vendor/autoload.php";
 
-$products = $connection->getProducts();
+    use app\Connection;
+    use app\method\Cart;
 
-echo '<pre>', print_r($_SESSION), '</pre>';
+    $connection = new Connection();    
+    $cart = new Cart();
+
+    $products = $connection->getProducts();
+
+    echo '<pre>', print_r($_SESSION), '</pre>';
 ?>
 
 <!DOCTYPE html>

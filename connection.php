@@ -1,8 +1,10 @@
 <?php
+namespace app;
+use \PDO;
+use \PDOException;
 
 class Connection
 {
-
   public PDO $pdo;
 
   public function __construct()
@@ -57,6 +59,10 @@ class Connection
       $error_message = '登入失敗';
       return $error_message;
     }
+  }
+
+  public function sayhi(){
+    echo "ho";
   }
 
 }

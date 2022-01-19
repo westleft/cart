@@ -1,8 +1,13 @@
 <?php
-    $connection = require_once './connection.php';
-    require_once './method/cart.php';
+    require_once __DIR__."/vendor/autoload.php";
 
+    use app\Connection;
+    use app\method\Cart;
+
+    $connection = new Connection();    
     $products = $connection->getProducts();
+
+    $cart = new Cart();
 
     $new_products = array_column($products, 'id');
     array_multisort($new_products, SORT_ASC, $products);
@@ -11,10 +16,6 @@
         $product = $products[$_GET['id'] - 1];
         $cart->addToCart($product);
     }
-
-    // echo $shipping_data['qty'];
-    // echo '<pre>', print_r($products), '</pre>';
-    // echo '<pre>', print_r($products[$_GET['id']]), '</pre>';
 ?>
 
 <!DOCTYPE html>
